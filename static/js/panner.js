@@ -45,10 +45,6 @@ video.addEventListener('seeked', function() {
     activeAudio.play();
   });
 
-// Call selectAudio on document load
-document.addEventListener('DOMContentLoaded', function() {
-    selectAudio(1);  // Default to the first audio track
-  });
 
 function playVideo() {
     video.play();
