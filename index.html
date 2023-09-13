@@ -38,8 +38,10 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/howler.min.js"></script>
+  <!-- script src="./static/js/howler.min.js"></script -->
   <script src="./static/js/index.js"></script>
+
+  <script src="./static/js/panner.js"></script>
 </head>
 <body>
 
@@ -106,7 +108,6 @@
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
               <span class="link-block">
                 <a href="https://arxiv.org/"
                    class="external-link button is-normal is-rounded is-dark">
@@ -116,6 +117,7 @@
                   <span>Paper (soon)</span>
                 </a>
               </span>
+
               <span class="link-block">
                 <a href="https://arxiv.org/"
                    class="external-link button is-normal is-rounded is-dark">
@@ -125,25 +127,6 @@
                   <span>arXiv (soon)</span>
                 </a>
               </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/xavriley"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code (soon)</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/xavriley"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data (soon)</span>
-                  </a>
             </div>
 
           </div>
@@ -165,30 +148,30 @@
 
   <div class="container is-max-desktop">      
     <div class="hero-body">
-      <video id="teaser" playsinline muted controls height="100%">
-        <source src="./static/videos/how_deep-mixed.mp4"
-                type="video/mp4">
-      </video>
-      <br>
-      <audio id="audio1">
-        <source src="./static/videos/how_deep.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      
-      <audio id="audio2">
-        <source src="./static/videos/how_deep-piano-norm.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      
-      <button class="original_audio" onclick="selectAudio(1)">Select Original Audio</button>
-      
-      <div id="videoOverlay" class="overlay">
-        <button onclick="playVideo()">Play Video</button>
+      <div class="video-container">
+        <video id="teaser" class="video-player" playsinline muted controls height="100%">
+          <source src="./static/videos/how_deep-mixed.mp4"
+                  type="video/mp4">
+        </video>
+        <br>
+        <audio id="audio1" class="audio-track">
+          <source src="./static/videos/how_deep.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+        <audio id="audio2" class="audio-track">
+          <source src="./static/videos/how_deep-piano-norm.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+        <button class="select-audio original_audio" data-audio-index="0">Select Original Audio</button>
+        
+        <div id="videoOverlay" class="video-overlay overlay">
+          <button class="play-btn">Play Video</button>
+        </div>
+        
+        <button class="select-audio transcribed_audio" data-audio-index="1">Select Transcribed Audio</button>
       </div>
-      
-      <button class="transcribed_audio" onclick="selectAudio(2)">Select Transcribed Audio</button>
-      
-      <script src="./static/js/panner.js"></script>
 
       <br />
     </div>
@@ -397,13 +380,33 @@
 
         <!-- Electric. -->
         <div>
-        <h3 class="title is-4">Electric Guitar</h3>
+        <h3 class="title is-4">Steel String Acoustic Guitar</h3>
         <div class="content has-text-justified">
         
-          <video poster="" id="kurt" controls playsinline height="100%">
-            <source src="./static/videos/kurt.mp4"
-                    type="video/mp4">
-          </video>
+          <div class="video-container">
+            <video id="teaser" class="video-player" playsinline muted controls height="100%">
+              <source src="./static/videos/sierra-mixed.mp4"
+                      type="video/mp4">
+            </video>
+            <br>
+            <audio id="audio1" class="audio-track">
+              <source src="./static/videos/sierra.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+            
+            <audio id="audio2" class="audio-track">
+              <source src="./static/videos/sierra-piano.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+            
+            <button class="select-audio original_audio" data-audio-index="0">Select Original Audio</button>
+            
+            <div id="videoOverlay" class="video-overlay overlay">
+              <button class="play-btn">Play Video</button>
+            </div>
+            
+            <button class="select-audio transcribed_audio" data-audio-index="1">Select Transcribed Audio</button>
+          </div>
         </div>
         <br/>
         </div>
@@ -469,13 +472,17 @@
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>TBC</code><!--code>@article{riley2023,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code--></pre>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>TBC</code><!--code>@article{riley2023,
+      author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+      title     = {Nerfies: Deformable Neural Radiance Fields},
+      journal   = {ICCV},
+      year      = {2021},
+    }</code--></pre>
+      </div>
+    </div>
   </div>
 </section>
 

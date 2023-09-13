@@ -178,3 +178,7 @@ button {
 button.transcribed_audio {
   float: right;
 }
+
+.video-content {
+  position: relative;
+}
