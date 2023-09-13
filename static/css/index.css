@@ -182,3 +182,8 @@ button.transcribed_audio {
 .video-content {
   position: relative;
 }
+
+.column iframe {
+  width: 100%;
+  height: 100%;
+}
