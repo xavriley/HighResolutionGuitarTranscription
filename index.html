@@ -38,6 +38,7 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/howler.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
 <body>
@@ -155,20 +156,47 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" playsinline controls height="100%">
-        <source src="./static/videos/julian.mp4"
-                type="video/mp4">
-      </video>
       <h2 class="subtitle has-text-centered">
         <span class="dnerf">High-resolution guitar transcription</span> turns any recording of solo guitar into MIDI,
         without the need for special equipment or clean recording conditions.
       </h2>
     </div>
   </div>
+
+  <div class="container is-max-desktop">      
+    <div class="hero-body">
+      <video id="teaser" playsinline muted controls height="100%">
+        <source src="./static/videos/how_deep-mixed.mp4"
+                type="video/mp4">
+      </video>
+      <br>
+      <audio id="audio1">
+        <source src="./static/videos/how_deep.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      
+      <audio id="audio2">
+        <source src="./static/videos/how_deep-piano-norm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      
+      <button class="original_audio" onclick="selectAudio(1)">Select Original Audio</button>
+      
+      <div id="videoOverlay" class="overlay">
+        <button onclick="playVideo()">Play Video</button>
+      </div>
+      
+      <button class="transcribed_audio" onclick="selectAudio(2)">Select Transcribed Audio</button>
+      
+      <script src="./static/js/panner.js"></script>
+
+      <br />
+    </div>
+  </div>
 </section>
 
 
-<section class="hero is-light is-small">
+<!-- <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
@@ -193,7 +221,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <section class="section">
@@ -216,25 +244,22 @@
             the entire <a href="https://guitarset.weebly.com/">GuitarSet</a> in a zero shot setting
              with state-of-the-art accuracy.
           </p>
-          <p>
-            When we combined our data with the GuitarSet training data, we ... TODO
-          </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
     <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          TBC
-          <!-- iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe -->
-        </div>
-      </div>
-    </div>
+    <!-- <div class="columns is-centered has-text-centered"> -->
+    <!--   <div class="column is-four-fifths"> -->
+    <!--     <h2 class="title is-3">Video</h2> -->
+    <!--     <div class="publication-video"> -->
+    <!--       TBC -->
+    <!--       <!-1- iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" -->
+    <!--               frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe -1-> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!-- </div> -->
     <!--/ Paper video. -->
   </div>
 </section>
@@ -243,25 +268,23 @@
 <section class="section">
   <div class="container is-max-desktop">
 
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
 
       <!-- Training data. -->
-      <div class="column">
+      <div class="column is-four-fifths">
         <h2 class="title is-3">Alignments</h2>
         <div class="columns is-centered">
-          <div class="column content">
+          <div class="column content has-text-justified">
             <p>Using our alignment method, we take a transcribed score and match it to the audio recording with high accuracy.</p>
+            <p>Here we show a piece from our training data. The original audio is from "Johnny Smith - Autumn Nocturne" and the video shows the aligned transcription. Note how the fine-alignment process recovers the micro-timing variations of chord onsets, despite these notes appearing in the same time instant in the original score.
+            </p>
+
             
-            <iframe width="225" src="https://www.youtube.com/embed/hNLgGd6jZQw?si=GBenCeY_GKi8hKC2&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/johnny-smith-alignment.mp4"
+              <source src="./static/videos/autumn_nocturne-viz-audio.mp4"
                       type="video/mp4">
             </video>
             
-            <p>Here we show a piece from our training data. The YouTube Video is original audio of Johnny Smith - Autumn Nocturne.
-              The other video shows the aligned transcription, rendered with audio from a guitar soundfont.
-            </p>
-
             <p>The source data was obtained from professional transcriber, <a href="https://www.francoisleduconlinelibrary.com/">François Leduc</a>. The GuitarPro files are commercially available from his website and for ease of reproduction are listed as follows:</p>
 
             <h4>Training Split</h4>
@@ -366,9 +389,11 @@
 
     <!-- Transcription Performance. -->
     <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Transcription Performance</h2>
+      <div class="column is-four-fifths">
+        <h2 class="title is-four-fifths">Transcription Performance</h2>
         <p>Due to diverse training conditions, we are able to transcribe different types of guitar.</p>
+
+        <br>
 
         <!-- Electric. -->
         <div>
@@ -416,7 +441,7 @@
 
     <!-- Concurrent Work. -->
     <div class="columns is-centered">
-      <div class="column is-full-width">
+      <div class="column is-four-fifths">
         <h2 class="title is-3">Related Links</h2>
 
         <div class="content has-text-justified">
